@@ -22,7 +22,7 @@ public class UserService {
         return repository.findAll().stream().map(this::convertModelToResponse).collect(Collectors.toList());
     }
 
-    private UserResponseDto convertModelToResponse(User user) {
+    protected UserResponseDto convertModelToResponse(User user) {
         UserResponseDto response = new UserResponseDto();
         response.setId(user.getId());
         response.setName(user.getName());

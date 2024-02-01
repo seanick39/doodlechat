@@ -1,7 +1,5 @@
 package com.doodle.backend.model.response;
 
-import com.doodle.backend.domain.User;
-
 import java.util.Objects;
 import java.util.UUID;
 

@@ -32,12 +32,15 @@ public class UsersMvcTest {
 
     @Test
     public void listUsers_matchesExpectedJson() throws Exception {
+        // Create dummy user
         User user = new User();
         user.setName("John Doe");
         user.setId(UUID.randomUUID());
 
+        // Mock repository's method to return list of above user
         Mockito.when(userRepository.findAll()).thenReturn(List.of(user));
 
+        // perform mock GET request to list all users and assert expectations
         mockMvc.perform(get("/users/").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
