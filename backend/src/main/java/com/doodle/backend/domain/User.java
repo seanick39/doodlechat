@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -43,6 +44,7 @@ public class User {
     public String getName() {
         return name;
     }
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -51,4 +53,16 @@ public class User {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User other = (User) o;
+        return Objects.equals(id, other.getId()) && Objects.equals(name, other.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
 }

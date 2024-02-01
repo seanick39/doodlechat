@@ -1,6 +1,6 @@
 package com.doodle.backend.web.controller;
 
-import com.doodle.backend.model.HealthResponse;
+import com.doodle.backend.model.response.HealthResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;

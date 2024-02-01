@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -82,5 +83,21 @@ public class Message {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message other = (Message) o;
+        return Objects.equals(id, other.getId()) && Objects.equals(data, other.getData())
+                && Objects.equals(user, other.getUser())
+                && Objects.equals(createdAt, other.getCreatedAt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, data, user, createdAt);
     }
 }

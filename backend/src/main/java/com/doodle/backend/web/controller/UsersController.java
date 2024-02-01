@@ -1,12 +1,20 @@
 package com.doodle.backend.web.controller;
 
+import com.doodle.backend.model.response.UserResponseDto;
 import com.doodle.backend.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import static com.doodle.backend.LogCodes.LIST_USERS;
 
 @RestController
 @CrossOrigin
@@ -17,4 +25,10 @@ public class UsersController {
     private UserService service;
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    @GetMapping("")
+    public HttpEntity<List<UserResponseDto>> getAllUsers() {
+        logger.info(LIST_USERS);
+        return ResponseEntity.ok(service.getAllUsers());
+    }
 }

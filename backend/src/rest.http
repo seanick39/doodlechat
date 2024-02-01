@@ -1,0 +1,7 @@
+### GET health check
+GET localhost:8888/health
+Content-Type: application/json
+
+### GET all users
+GET localhost:8888/users/
+Content-Type: application/json

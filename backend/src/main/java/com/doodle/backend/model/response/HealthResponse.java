@@ -1,4 +1,4 @@
-package com.doodle.backend.model;
+package com.doodle.backend.model.response;
 
 public class HealthResponse {
 

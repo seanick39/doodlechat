@@ -19,7 +19,7 @@ spring:
         format_sql: true
   flyway:
     enabled: true
-    locations: classpath:db/migrations
+    locations: classpath:db/migrations,db/initial-data
     sql-migration-prefix: v
     sql-migration-separator: "-"
     baselineOnMigrate: true
