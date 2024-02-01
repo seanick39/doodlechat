@@ -1,5 +1,27 @@
 spring:
   application:
     name: fe-core-challenge
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/doodlechat
+    username: nikhil
+    password:
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: select 1
+
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migrations
+    sql-migration-prefix: v
+    sql-migration-separator: "-"
+    baselineOnMigrate: true
 server:
   port: 8888
