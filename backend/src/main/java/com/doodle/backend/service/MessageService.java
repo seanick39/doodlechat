@@ -1,11 +1,14 @@
 package com.doodle.backend.service;
 
 import com.doodle.backend.domain.Message;
+import com.doodle.backend.domain.User;
+import com.doodle.backend.model.request.MessageRequestDto;
 import com.doodle.backend.model.response.MessageResponseDto;
 import com.doodle.backend.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -31,6 +34,14 @@ public class MessageService {
 
     public List<MessageResponseDto> getAllMessages() {
         return repository.findAllByOrderByCreatedAtAsc().stream().map(this::convertModelToResponse).collect(Collectors.toList());
+    }
+
+    public MessageResponseDto save(MessageRequestDto requestMessage) {
+        User user = userService.findById(requestMessage.getUserId());
+        Message message = new Message(user, requestMessage.getData());
+        message.setCreatedAt(Instant.now());
+        message = repository.save(message);
+        return convertModelToResponse(message);
     }
 
     protected MessageResponseDto convertModelToResponse(Message message) {
