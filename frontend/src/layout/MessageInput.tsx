@@ -22,9 +22,9 @@ export default function MessageInput(props: Props): React.JSX.Element {
   }
   
   return (
-    <>
+    <div id="message-input-box">
       <input value={messageString} onChange={e => setMessageString(e.target.value)} placeholder="Message"/>
       <button onClick={onMessageSend}>Send</button>
-    </>
+    </div>
   )
 }

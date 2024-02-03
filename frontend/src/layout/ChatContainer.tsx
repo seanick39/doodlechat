@@ -31,7 +31,7 @@ export default function ChatContainer(props: Props): React.JSX.Element {
   
   return (
     <>
-      <MessagePane messages={messages}/>
+      <MessagePane messages={messages} user={props.user}/>
       <MessageInput user={props.user} onMessageSend={onMessageSend}/>
     </>
   )

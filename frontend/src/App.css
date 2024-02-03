@@ -1,3 +1,69 @@
 #app {
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}
+
+header {
+  top: 0;
+  height: 5em;
+  margin-top: 0;
+  position: sticky;
+  display: flex;
+  width: 100%;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+header #header-username {
+  flex-grow: 1;
   text-align: center;
+}
+
+#message-pane {
+  flex-direction: column-reverse;
+  display: flex;
+  height: 100%;
+  overflow: scroll;
+  max-width: 100vw;
+}
+
+#message-pane * {
+  overflow-anchor: none;
+}
+
+#message-pane-anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+
+.message-box {
+  display: block;
+  margin: .5rem;
+  max-width: fit-content;
+  width: 80%;
+  border: 2px solid darkgrey;
+}
+
+.message-box.this-user {
+  align-self: flex-end;
+}
+
+#message-input-box {
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  height: 3rem;
+  padding: .5em 1em;
+}
+
+#message-input-box input  {
+  min-width: 75%;
+  font-size: 1.25rem;
+  border-radius: 20px;
+  padding: 0 .5em;
 }
