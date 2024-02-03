@@ -16,8 +16,10 @@ function App(): React.JSX.Element {
   
   return (
     <div id="app">
-      <Header user={user}/>
-      <ChatContainer user={user}/>
+      <div id="app-container">
+        <Header user={user}/>
+        <ChatContainer user={user}/>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,7 @@
 #app {
   bottom: 0;
   top: 0;
-  position: absolute;
   width: 100%;
-  overflow-x: hidden;
 }
 
 header {
@@ -27,7 +25,7 @@ header {
 #header-container {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
 }
 
 #header-username {
@@ -37,6 +35,7 @@ header {
 }
 #header-logo {
   margin-left: .5em;
+  align-self: center;
 }
 
 #header-brand {
@@ -55,8 +54,7 @@ header {
 #message-pane {
   flex-direction: column-reverse;
   display: flex;
-  height: 100%;
-  overflow: scroll;
+  overflow: hidden;
   max-width: 100vw;
 }
 
@@ -135,4 +133,65 @@ header {
   font: inherit;
   outline: inherit;
   font-weight: 600;
+}
+
+@media screen and (min-width: 992px) {
+  #app {
+    display: flex;
+    justify-content: center;
+    background: rgb(65, 80, 75);
+  }
+  #app-container {
+    width: 70%;
+    background: white;
+    box-shadow: 0 0 30px black;
+  }
+  header {
+    box-shadow: 0 0 30px black, 0 5px 3px -3px black;
+  }
+
+  #message-input-box {
+    box-shadow: 0 0 30px black;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  #app-container {
+    width: 50%;
+    background: white;
+    box-shadow: 0 0 30px black;
+  }
+}
+
+@media screen and (max-height: 750px) {
+  body {
+    font-size: .8rem;
+  }
+  header {
+    height: 3rem;
+  }
+  #header-username {
+    font-size: 1rem;
+  }
+  #header-brand {
+    font-size: 1rem;
+  }
+  #header-logo > img {
+    width: 20px;
+    height: 20px;
+    align-content: center;
+  }
+  #header-user {
+    font-size: 1rem;
+  }
+  #header-username {
+    font-size: 0.6rem;
+  }
+
+  #message-input-box {
+    height: 2rem;
+  }
+  #message-input-box input {
+    width: 55%;
+  }
 }
