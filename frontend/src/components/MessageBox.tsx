@@ -15,9 +15,11 @@ export default function MessageBox(props: Props): React.JSX.Element {
   
   return (
     <div className={boxClassName}>
-      <span>{userName}</span>
-      <span>{message.created_at}</span>
-      <span>{message.message}</span>
+      <div className="message-meta">
+        <div className="message-box-username">{userName}</div>
+        <div className="message-box-timestamp">{message.created_at}</div>
+      </div>
+      <p>{message.message}</p>
     </div>
   )
 }

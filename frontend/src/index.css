@@ -1,4 +1,11 @@
+:root {
+  --doodle-color: rgb(35, 115, 230);
+}
+
 html,
 body {
   font-family: Suisse Intl, "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
