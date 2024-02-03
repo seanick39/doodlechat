@@ -9,3 +9,8 @@ export type Message = {
   user: User;
   created_at: string;
 }
+
+export type MessageRequest = {
+  message: string;
+  user_id: string;
+}

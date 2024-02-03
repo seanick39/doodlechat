@@ -1,7 +1,7 @@
 import type React from "react";
 import type {Message} from "../types";
 
-interface Props {
+type Props = {
   message: Message;
 }
 

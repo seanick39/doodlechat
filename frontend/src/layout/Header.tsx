@@ -1,7 +1,7 @@
 import type React from "react";
 import type {User} from "../types";
 
-interface Props {
+type Props = {
   user: User | null;
 }
 

@@ -3,7 +3,7 @@ import type {Message} from "../types";
 
 import MessageBox from "../components/MessageBox";
 
-interface Props {
+type Props = {
   messages: Message[];
 }
 
