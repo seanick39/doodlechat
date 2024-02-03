@@ -3,10 +3,11 @@
   top: 0;
   position: absolute;
   width: 100%;
+  overflow-x: hidden;
 }
 
 header {
-  background: var(--doodle-color);
+  background: whitesmoke;
   top: 0;
   height: 5em;
   margin-top: 0;
@@ -16,13 +17,39 @@ header {
   z-index: 1;
   align-items: center;
   justify-content: center;
-  color: white;
+  flex-direction: column;
   font-weight: 600;
+  border-radius: 0 0 15px 15px;
+  color: var(--doodle-color);
+  box-shadow: 0 5px 3px -3px black;
 }
 
-header #header-username {
+#header-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+#header-username {
   flex-grow: 1;
   text-align: center;
+  font-size: .8rem;
+}
+#header-logo {
+  margin-left: .5em;
+}
+
+#header-brand {
+  color: var(--doodle-color);
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+#header-user {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  margin-right: .5em;
 }
 
 #message-pane {
@@ -64,7 +91,7 @@ header #header-username {
 }
 
 .message-meta > .message-box-username, .message-box-timestamp {
-  color: darkgrey;
+  color: #6a6a6a;
 }
 
 .message-box.this-user {
