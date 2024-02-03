@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 import static com.doodle.backend.LogCodes.LIST_MESSAGES;
 import static com.doodle.backend.LogCodes.SAVE_NEW_MESSAGE;
@@ -25,10 +26,20 @@ public class MessagesController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * List all messages if no `afterMessageId` UUID as request param is provided.
+     * With this request param, the frontend can poll for new messages that
+     * were saved after the message to which this id pertains.
+     * @param afterMessageId    UUID    The id of message after which all messages to be sent.
+     */
     @RequestMapping("")
-    public List<MessageResponseDto> getAllMessages() {
+    public List<MessageResponseDto> getAllMessages(@RequestParam(name = "afterMessageId", required = false) @Valid UUID afterMessageId) {
         logger.info(LIST_MESSAGES);
-        return messageService.getAllMessages();
+        if (afterMessageId == null) {
+            return messageService.getAllMessages();
+        }
+        return messageService.getAllMessagesAfterId(afterMessageId);
+
     }
 
     @ResponseStatus(HttpStatus.CREATED)

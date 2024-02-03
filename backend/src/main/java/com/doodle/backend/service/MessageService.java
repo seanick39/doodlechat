@@ -2,6 +2,7 @@ package com.doodle.backend.service;
 
 import com.doodle.backend.domain.Message;
 import com.doodle.backend.domain.User;
+import com.doodle.backend.exception.MessageNotFoundException;
 import com.doodle.backend.model.request.MessageRequestDto;
 import com.doodle.backend.model.response.MessageResponseDto;
 import com.doodle.backend.repository.MessageRepository;
@@ -13,6 +14,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static com.doodle.backend.service.UserService.DEMO_USER;
@@ -45,6 +47,11 @@ public class MessageService {
         message.setCreatedAt(Instant.now());
         repository.save(message);
         return convertModelToResponse(message);
+    }
+
+    public List<MessageResponseDto> getAllMessagesAfterId(UUID messageId) {
+        Message lastMessage = repository.findById(messageId).orElseThrow(() -> new MessageNotFoundException(messageId));
+        return repository.findAllByCreatedAtIsAfterOrderByCreatedAtAsc(lastMessage.getCreatedAt()).stream().map(this::convertModelToResponse).collect(Collectors.toList());
     }
 
     /**

@@ -21,3 +21,8 @@ Content-Type: application/json
 
 ### GET demo user
 GET localhost:8888/users/demo-user
+
+
+### GET afterMessageId
+GET localhost:8888/messages/?afterMessageId=<valid_message_id>
+Content-Type: application/json
