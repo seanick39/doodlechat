@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.doodle.backend.LogCodes.GET_DEMO_USER;
 import static com.doodle.backend.LogCodes.LIST_USERS;
 
 @RestController
@@ -30,5 +31,11 @@ public class UsersController {
     public HttpEntity<List<UserResponseDto>> getAllUsers() {
         logger.info(LIST_USERS);
         return ResponseEntity.ok(service.getAllUsers());
+    }
+
+    @GetMapping("/demo-user")
+    public HttpEntity<UserResponseDto> getDemoUser() {
+        logger.info(GET_DEMO_USER);
+        return ResponseEntity.ok(service.getDemoUser());
     }
 }

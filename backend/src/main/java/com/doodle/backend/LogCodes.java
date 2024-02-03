@@ -6,5 +6,7 @@ public final class LogCodes {
     public static final String LIST_USERS = "LIST_USERS";
     public static final String LIST_MESSAGES = "LIST_MESSAGES";
     public static final String SAVE_NEW_MESSAGE = "SAVE_NEW_MESSAGE";
+    public static final String GET_DEMO_USER = "GET_DEMO_USER";
+
 
 }
