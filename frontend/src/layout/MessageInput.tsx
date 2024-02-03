@@ -4,7 +4,7 @@ export default function MessageInput(): React.JSX.Element {
   return (
     <>
       <input/>
-      <button/>
+      <button>Send</button>
     </>
   )
 }

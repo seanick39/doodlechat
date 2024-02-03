@@ -1,9 +1,14 @@
 import type React from "react";
+import type {User} from "../types";
 
-export default function Header(): React.JSX.Element {
+interface Props {
+  user: User | null;
+}
+
+export default function Header(props: Props): React.JSX.Element {
   return (
     <header>
-    
+      <div id="header-username">{props.user?.name}</div>
     </header>
   )
 }

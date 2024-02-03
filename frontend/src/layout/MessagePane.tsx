@@ -1,8 +1,17 @@
 import type React from "react";
+import type {Message} from "../types";
 
-export default function MessagePane(): React.JSX.Element {
+import MessageBox from "../components/MessageBox";
+
+interface Props {
+  messages: Message[];
+}
+
+export default function MessagePane(props: Props): React.JSX.Element {
+  
   return (
-    <>
-    </>
+    <div>
+      {props.messages.map((message, i) => <MessageBox message={message} key={i} />)}
+    </div>
   )
 }
