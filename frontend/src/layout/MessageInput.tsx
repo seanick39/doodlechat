@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {Message, User} from "../types";
 import {sendMessage} from "../service";
 
@@ -11,8 +11,10 @@ export default function MessageInput(props: Props): React.JSX.Element {
   const [messageString, setMessageString] = useState("");
   const [sendAttempted, setSendAttempted] = useState(false);
   
-  const onMessageSend = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const onMessageSend = useCallback((e?: React.MouseEvent) => {
+    if (e)  {
+      e.preventDefault();
+    }
     setSendAttempted(true);
     if (messageString.length > 0 && !!props.user) {
       sendMessage({user_id: props.user.id, message: messageString})
@@ -22,7 +24,18 @@ export default function MessageInput(props: Props): React.JSX.Element {
           setSendAttempted(false);
         })
     }
-  }
+  }, [props, messageString]);
+  
+  const keyDownListener = useCallback((k: any) => {
+    if (k.code === "Enter" || k.code === "Return") {
+      onMessageSend();
+    }
+  }, [onMessageSend]);
+  
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownListener)
+    return () => document.removeEventListener("keydown", keyDownListener);
+  }, [keyDownListener]);
   
   const onInputChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSendAttempted(false);

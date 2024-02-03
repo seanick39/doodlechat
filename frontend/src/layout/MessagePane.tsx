@@ -1,4 +1,4 @@
-import type React from "react";
+import React, {useEffect, useRef} from "react";
 import type {Message, User} from "../types";
 
 import MessageBox from "../components/MessageBox";
@@ -10,8 +10,18 @@ type Props = {
 
 export default function MessagePane(props: Props): React.JSX.Element {
   
+  let ref = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    if (ref.current) {
+      const bottom = ref.current.offsetTop + ref.current.offsetHeight;
+      window.scrollTo({ top: bottom });
+    }
+  })
+  
   return (
-    <div id="message-pane">
+    // @ts-ignore
+    <div id="message-pane" ref={ref}>
       {props.messages.map((message, i) => <MessageBox message={message} user={props.user} key={i} />)}
       <div id="message-pane-anchor"/>
     </div>
