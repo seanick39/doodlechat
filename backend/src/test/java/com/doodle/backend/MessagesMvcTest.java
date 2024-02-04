@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.*;
@@ -31,6 +32,7 @@ import java.util.UUID;
 
 @SpringBootTest(classes = BackendChallengeApplicationStarter.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 public class MessagesMvcTest {
     @Autowired
     private MockMvc mockMvc;
@@ -73,11 +75,11 @@ public class MessagesMvcTest {
         mockMvc.perform(get("/messages/").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id", equalTo(message.getId().toString())))
-                .andExpect(jsonPath("$[0].message", equalTo(message.getData())))
-                .andExpect(jsonPath("$[0].created_at", equalTo(expectedCreatedAt)))
-                .andExpect(jsonPath("$[0].user.id", equalTo(user.getId().toString())))
-                .andExpect(jsonPath("$[0].user.name", equalTo(user.getName())));
+                .andExpect(jsonPath("$[0].id", is(message.getId().toString())))
+                .andExpect(jsonPath("$[0].message", is(message.getData())))
+                .andExpect(jsonPath("$[0].created_at", is(expectedCreatedAt)))
+                .andExpect(jsonPath("$[0].user.id", is(user.getId().toString())))
+                .andExpect(jsonPath("$[0].user.name", is(user.getName())));
     }
 
     @Test

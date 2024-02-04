@@ -3,9 +3,9 @@ spring:
     name: fe-core-challenge
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/doodlechat
-    username: nikhil
-    password:
+    url: jdbc:postgresql://db:5432/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-test-query: select 1

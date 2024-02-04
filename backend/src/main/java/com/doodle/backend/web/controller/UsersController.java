@@ -36,6 +36,6 @@ public class UsersController {
     @GetMapping("/demo-user")
     public HttpEntity<UserResponseDto> getDemoUser() {
         logger.info(GET_DEMO_USER);
-        return ResponseEntity.ok(service.getDemoUser());
+        return ResponseEntity.ok(service.getDemoUserDto());
     }
 }
