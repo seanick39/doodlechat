@@ -46,8 +46,8 @@ export default function MessageInput(props: Props): React.JSX.Element {
   
   return (
     <div id="message-input-box">
-      <input value={messageString} onChange={onInputChanged} placeholder="Message" className={inputClassName}/>
-      <button onClick={onMessageSend}>Send</button>
+      <input data-testid="message-input" value={messageString} onChange={onInputChanged} placeholder="Message" className={inputClassName}/>
+      <button role="button" onClick={onMessageSend}>Send</button>
     </div>
   )
 }
