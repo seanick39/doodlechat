@@ -7,6 +7,9 @@ const requestHeaders = {
   "Accept": "application/json",
 }
 
+/** Get messages API call.
+ *  Optional param afterMessageId to get messages after this id.
+ *  Use-case: to poll for new messages, and add those new messages to state of older messages. */
 export function getMessages(afterMessageId?: string): Promise<Message[]> {
   let url = `${URL_MESSAGES}`;
   if (!!afterMessageId?.length) {
@@ -15,6 +18,7 @@ export function getMessages(afterMessageId?: string): Promise<Message[]> {
   return fetch(url, {headers: requestHeaders}).then(res => res.json());
 }
 
+/** Get demo user (this user) which is saved to database as "DoodleUser" */
 export function getDemoUser(): Promise<User> {
   return fetch(URL_DEMO_USER, {headers: requestHeaders}).then(res => res.json());
 }

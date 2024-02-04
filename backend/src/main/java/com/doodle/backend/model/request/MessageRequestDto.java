@@ -9,6 +9,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Request DTO for Message entity.
+ */
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MessageRequestDto {
 

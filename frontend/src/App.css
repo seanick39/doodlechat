@@ -1,3 +1,5 @@
+/* Responsiveness rules for mobile-first */
+
 #app {
   bottom: 0;
   top: 0;
@@ -83,7 +85,6 @@ header {
   border: 2px solid darkgrey;
 }
 .message-meta {
-  /*background: lightgray;*/
   padding: .3em .35em;
   border-radius: 15px 15px 0 0;
   border-bottom: 2px solid lightgray;
@@ -142,6 +143,7 @@ header {
   font-weight: 600;
 }
 
+/* Media query for large devices */
 @media screen and (min-width: 992px) {
   #app {
     display: flex;
@@ -162,6 +164,7 @@ header {
   }
 }
 
+/* Breakpoint for extra-large devices */
 @media screen and (min-width: 1200px){
   #app-container {
     width: 50%;
@@ -170,6 +173,7 @@ header {
   }
 }
 
+/* For devices with low height availability */
 @media screen and (max-height: 750px) {
   body {
     font-size: .8rem;

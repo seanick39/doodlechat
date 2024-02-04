@@ -9,8 +9,10 @@ import java.util.UUID;
 
 public interface MessageRepository extends JpaRepository<Message, UUID> {
 
+    /** findAll with chronological sorting */
     List<Message> findAllByOrderByCreatedAtAsc();
     Long countByUserName(String userName);
 
+    /** findAll with chronological sorting where attribute createdAt is after parameter createdAt */
     List<Message> findAllByCreatedAtIsAfterOrderByCreatedAtAsc(Instant createdAt);
 }

@@ -6,10 +6,13 @@ type Props = {
   user: User | null;
 }
 
+/** Represents each message cloud with username, timestamp, and message data */
 export default function MessageBox(props: Props): React.JSX.Element {
   const {message} = props;
   
   const isDemoUser = !!props.user && props.user.id === message.user.id;
+  
+  // extra css class for container to align right for demoUser (this user)
   const boxClassName = "message-box" + (isDemoUser ? " this-user" : "");
   const userName = isDemoUser ? "You" : message.user.name;
   

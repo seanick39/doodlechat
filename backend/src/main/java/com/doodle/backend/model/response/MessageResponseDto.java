@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Response DTO for Message entity.
+ */
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class MessageResponseDto {
 

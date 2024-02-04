@@ -28,6 +28,7 @@ public class MessageService {
     public MessageService() {
     }
 
+    // Timestamp format for createdAt attribute to format Instant objects
     private static final String PATTERN_FORMAT = "dd MMM yyyy hh:mm";
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter

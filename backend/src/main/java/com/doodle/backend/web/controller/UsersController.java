@@ -33,6 +33,7 @@ public class UsersController {
         return ResponseEntity.ok(service.getAllUsers());
     }
 
+    /** The DEMO_USER (DoodleUser) will have been saved in database using sql script under /resources */
     @GetMapping("/demo-user")
     public HttpEntity<UserResponseDto> getDemoUser() {
         logger.info(GET_DEMO_USER);

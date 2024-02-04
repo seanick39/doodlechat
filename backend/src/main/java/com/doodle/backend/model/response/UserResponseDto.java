@@ -3,6 +3,9 @@ package com.doodle.backend.model.response;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Response DTO for User entity.
+ */
 public class UserResponseDto {
     private UUID id;
     private String name;

@@ -1,4 +1,5 @@
 FROM maven:3.8.5-eclipse-temurin-17 AS builder
+# Build and package the jar in builder stage
 WORKDIR /app
 COPY pom.xml /app/pom.xml
 RUN mvn dependency:go-offline
@@ -11,6 +12,8 @@ WORKDIR /app/target/dependency
 RUN jar -xf ../*.jar
 
 FROM eclipse-temurin:17-jre-focal
+
+# Use the artifact from builder stage to run the jar
 
 ARG DEPENDENCY=/app/target/dependency
 COPY --from=builder ${DEPENDENCY}/BOOT-INF/lib /app/lib

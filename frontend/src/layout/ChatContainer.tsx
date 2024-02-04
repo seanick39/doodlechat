@@ -13,12 +13,14 @@ type Props = {
 export default function ChatContainer(props: Props): React.JSX.Element {
   const [messages, setMessages] = useState<Message[]>([]);
   
+  // load initial messages on first mount
   useEffect(() => {
     getMessages()
       .then(setMessages)
       .catch(console.error)
   }, [])
   
+  // poll at an interval of 5 seconds for new messages with the last message's uuid
   usePolling(() => {
     getMessages(messages.at(-1)?.id ?? "")
       .then(newMessages => setMessages(oldMessages => oldMessages.concat(newMessages)))

@@ -12,12 +12,13 @@ export default function MessagePane(props: Props): React.JSX.Element {
   
   let ref = useRef<HTMLElement>(null);
   
+  // effect to scroll to bottom of message pane on first mount, so we're on the last message
   useEffect(() => {
     if (ref.current) {
       const bottom = ref.current.offsetTop + ref.current.offsetHeight;
       window.scrollTo({ top: bottom });
     }
-  })
+  }, [])
   
   return (
     // @ts-ignore

@@ -1,5 +1,6 @@
 import {useEffect, useRef} from "react";
 
+/** Hook to poll at interval of "delay" */
 export function usePolling(callback: Function, delay: number) {
   const callbackRef = useRef<Function | null>(null);
   
