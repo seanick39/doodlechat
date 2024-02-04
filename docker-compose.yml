@@ -5,8 +5,6 @@ services:
       - POSTGRES_DB=doodlechat_db
       - POSTGRES_USER=doodleuser
       - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./doodlechat-pg-vol:/var/lib/postgresql/data
     expose:
       - "5432"
     networks:
@@ -27,7 +25,6 @@ services:
     depends_on:
       - db
 
-
   frontend:
     build:
       context: ./frontend
@@ -36,8 +33,6 @@ services:
       - "3000:3000"
     environment:
       - REACT_APP_API_ENDPOINT=http://localhost:8888
-    volumes:
-      - ./frontend:/app
     depends_on:
       - backend
     networks:

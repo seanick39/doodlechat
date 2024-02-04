@@ -1,8 +1,8 @@
 FROM node:21.5.0
 WORKDIR /app
 
-COPY package.json .
-COPY package-lock.json .
+COPY . .
 
-RUN npm install
+RUN npm install \
+    && npm install react-scripts@5.0.1 --location=global
 CMD ["npm", "run", "start"]

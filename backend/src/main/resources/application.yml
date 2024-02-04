@@ -11,12 +11,8 @@ spring:
       connection-test-query: select 1
 
   jpa:
-    show-sql: true
     generate-ddl: false
     database: postgresql
-    properties:
-      hibernate:
-        format_sql: true
   flyway:
     enabled: true
     locations: classpath:db/migrations,db/initial-data
